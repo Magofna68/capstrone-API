@@ -1,0 +1,29 @@
+{
+  "name": "capstrone-api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "no"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Magofna68/capstrone-API.git"
+  },
+  "keywords": [
+    "no"
+  ],
+  "author": "Brandon Magofna",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Magofna68/capstrone-API/issues"
+  },
+  "homepage": "https://github.com/Magofna68/capstrone-API#readme",
+  "dependencies": {
+    "@sendgrid/mail": "^7.4.5",
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "nodemon": "^2.0.12"
+  }
+}
