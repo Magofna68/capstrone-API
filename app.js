@@ -4,7 +4,6 @@ const cors = require('cors');
 const sgMail = require('@sendgrid/mail');
 
 const app = express();
-// const API_KEY = process.env.REACT_APP_SENDGRID_API_KEY;
 
 app.use(bodyParser.json());
 
@@ -24,10 +23,7 @@ app.get('/api', (req, res, next) => {
 app.post('/api/email', (req, res, next) => {
 
   console.log(req.body);
-  // sendGrid.setApiKey('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');
-  // const SEND_GRID_API_KEY = process.env.REACT_APP_SENDGRID_API_KEY
 
-  // sendGrid.setApiKey({ SEND_GRID_API_KEY });
   sgMail
     .setApiKey(process.env.REACT_APP_SENDGRID_API_KEY);
 
@@ -36,7 +32,6 @@ app.post('/api/email', (req, res, next) => {
     from: req.body.email,
     subject: 'New Client: Web Contact',
     text: req.body.message,
-    // html: '<strong>and easy to do anywhere, even with Node.js</strong>',
   }
 
   sgMail
