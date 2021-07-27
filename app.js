@@ -1,7 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
-const sendGrid = require('@sendGrid/mail');
+const sgMail = require('@sendgrid/mail');
 
 const app = express();
 // const API_KEY = process.env.REACT_APP_SENDGRID_API_KEY;
@@ -25,10 +25,11 @@ app.post('/api/email', (req, res, next) => {
 
   console.log(req.body);
   // sendGrid.setApiKey('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');
-  const SEND_GRID_API_KEY = process.env.REACT_APP_SENDGRID_API_KEY
+  // const SEND_GRID_API_KEY = process.env.REACT_APP_SENDGRID_API_KEY
 
   // sendGrid.setApiKey({ SEND_GRID_API_KEY });
-  sendGrid.setApiKey('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');
+  sgMail
+    .setApiKey(process.env.REACT_APP_SENDGRID_API_KEY);
 
   const msg = {
     to: 'Magofna68@gmail.com',
@@ -38,15 +39,16 @@ app.post('/api/email', (req, res, next) => {
     // html: '<strong>and easy to do anywhere, even with Node.js</strong>',
   }
 
-  sendGrid.send(msg)
-    .then(result => {
+  sgMail
+    .send(msg)
+    .then(() => {
 
       res.status(200).json({
         success: true
       })
     })
-    .catch(err => {
-      console.log('error: ', err);
+    .catch(error => {
+      console.log('error: ', error);
       res.status(401).json({
         success: false
       });
